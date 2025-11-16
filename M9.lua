@@ -8,13 +8,13 @@ local function getChar()
     return char, char:WaitForChild("HumanoidRootPart")
 end
 
-local SHOTGUN_POS = Vector3.new(820.28, 98, 2217.44)
+local M9_POS = Vector3.new(813.59, 98, 2217.31)
 
 local function tempTeleportAndBounce()
     local _, hrp = getChar()
     local originalPos = hrp.CFrame
 
-    hrp.CFrame = CFrame.new(SHOTGUN_POS)
+    hrp.CFrame = CFrame.new(M9_POS)
 
     local upTween = TweenService:Create(
         hrp,
