@@ -1,0 +1,38 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+
+local player = Players.LocalPlayer
+
+local function getChar()
+    local char = player.Character or player.CharacterAdded:Wait()
+    return char, char:WaitForChild("HumanoidRootPart")
+end
+
+local SHOTGUN_POS = Vector3.new(820.28, 98, 2217.44)
+
+local function tempTeleportAndBounce()
+    local _, hrp = getChar()
+    local originalPos = hrp.CFrame
+
+    hrp.CFrame = CFrame.new(SHOTGUN_POS)
+
+    local upTween = TweenService:Create(
+        hrp,
+        TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+        {CFrame = CFrame.new(SHOTGUN_POS + Vector3.new(0,3,0))}
+    )
+    upTween:Play()
+    upTween.Completed:Wait()
+
+    local downTween = TweenService:Create(
+        hrp,
+        TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.In),
+        {CFrame = CFrame.new(SHOTGUN_POS)}
+    )
+    downTween:Play()
+    downTween.Completed:Wait()
+
+    hrp.CFrame = originalPos
+end
+
+tempTeleportAndBounce()
