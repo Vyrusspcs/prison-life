@@ -42,21 +42,16 @@ if targetPlayer and targetPlayer.Character then
                 end)
 
                 if success then
-                    print("true Shot " .. i .. "/12 fired!")
+                    print("success")
                 else
-                    print("false Shot " .. i .. "/12 failed")
+                    print("failed")
                 end
 
                 wait(0.1)
             end
 
             humanoidRootPart.CFrame = originalCFrame
-            print("ll 12 shots fired! Returned to original position.")
-        else
-            print("Your character doesn't have a HumanoidRootPart")
         end
-    else
-        print("KempaBoss is not alive or doesn't have a torso")
     end
 else
     print("KempaBoss not found or no character")
